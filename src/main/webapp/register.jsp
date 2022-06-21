@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String error = (String) session.getAttribute("error");
+    session.removeAttribute("error");
+%>
 <html>
 <head>
     <title>Login</title>
@@ -15,19 +19,24 @@
 <body>
 <%@ include file="nav.jsp" %>
 <div class="container mt-3 col-5 justify-content-center">
-    <form class="justify-content-center p-4 border ">
+    <form class="justify-content-center p-4 border" action="AdminController?action=register" method="POST">
         <h2>Register</h2>
         <div class="mb-3">
-            <label for="fullName" class="form-label">Email address</label>
-            <input type="Full names" class="form-control" id="fullName" aria-describedby="emailHelp">
+            <label for="fullName" class="form-label">Full name</label>
+            <input type="Full names" required name="fullName" class="form-control" id="fullName"
+                   aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="email" required name="email" class="form-control" id="email" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" required name="password" class="form-control" id="password">
+        </div>
+        <div class="mb-3">
+            <label for="cpassword" class="form-label">Confirm password</label>
+            <input type="password" required name="cpassword" class="form-control" id="cpassword">
         </div>
         <div class="d-flex flex-row justify-content-center gap-3">
             <p> Gender </p>
@@ -43,6 +52,12 @@
                     Male
                 </label>
             </div>
+        </div>
+        <% if(error!=null){ %>
+        <div class="py-3 d-flex flex-row justify-content-center">
+            <p class="text-danger"> <%= error %> </p>
+        </div>
+        <% } %>
         </div>
         <div class="d-flex flex-row justify-content-center">
             <button type="submit" class="btn btn-primary">Register</button>

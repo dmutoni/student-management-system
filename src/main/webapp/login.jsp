@@ -15,15 +15,15 @@
 <body>
 <%@ include file="nav.jsp" %>
 <div class="container col-5 justify-content-center">
-    <form class="border p-4 mt-3" action="/student_management_system_war/AdminController" method="post">
+    <form class="border p-4 mt-3" action="AdminController?action=login" method="POST">
         <h2>Login</h2>
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="email" required name="email" class="form-control" id="email" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" required name="password" class="form-control" id="password">
         </div>
         <div class="d-flex flex-row justify-content-center">
             <button type="submit" class="btn btn-primary">Login</button>
