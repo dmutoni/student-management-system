@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String error = (String) session.getAttribute("error");
+    session.removeAttribute("error");
+%>
 <html>
 <head>
     <title>Login</title>
@@ -31,6 +35,11 @@
         <div class="mt-4">
             <a class="" href="register.jsp">Don't have an account? Sign up</a>
         </div>
+        <% if(error!=null){ %>
+        <div class="py-3 d-flex flex-row justify-content-center">
+            <p class="text-danger"> <%= error %> </p>
+        </div>
+        <% } %>
     </form>
 </div>
 </body>

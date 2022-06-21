@@ -9,6 +9,8 @@
 <%
     String error = (String) session.getAttribute("error");
     session.removeAttribute("error");
+    String message = (String) session.getAttribute("message");
+    session.removeAttribute("message");
 %>
 <html>
 <head>
